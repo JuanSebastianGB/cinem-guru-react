@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userUsername, setUserUsername] = useState('');
+
+  useEffect(() => {
+    const getToken = () => localStorage.getItem('accessToken');
+    const accessToken = getToken();
+    const headers = {
+      accessToken,
+    };
+    fetch('/api/auth/');
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      App
+      {/* <Input />
+      <SelectInput />
+      <Button label="test" />
+      <SearchBar title="title" /> */}
     </div>
   );
 }
