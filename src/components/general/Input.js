@@ -1,6 +1,8 @@
-import '../../general.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './general.css';
 
 import PropTypes from 'prop-types';
+import { icons } from '../../icons/icons';
 const Input = ({
   label,
   type,
@@ -14,16 +16,22 @@ const Input = ({
     setValue(e.target.value);
   };
   return (
-    <input
-      label={label}
-      type={type}
-      className={className}
-      icon={icon ? icon : null}
-      inputAttributes={inputAttributes ? inputAttributes : null}
-      onChange={handleInput}
-    >
-      {value}
-    </input>
+    <>
+      <div className="GeneralInput">
+        {icon ? <FontAwesomeIcon className="icon" icon={icons[icon]} /> : null}
+        <label>
+          {label}
+          <input
+            type={type}
+            className={className ? className : null}
+            // inputAttributes={inputAttributes ? inputAttributes : null}
+            onChange={handleInput}
+          >
+            {value}
+          </input>
+        </label>
+      </div>
+    </>
   );
 };
 

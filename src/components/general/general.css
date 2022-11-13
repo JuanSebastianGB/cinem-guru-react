@@ -1,0 +1,15 @@
+.GeneralInput input {
+  border-style: none;
+  border-bottom: thin solid rgb(204, 111, 111);
+  display: block;
+  padding: 0.2rem;
+  width: 100%;
+}
+.GeneralInput input:focus-visible {
+  outline: none;
+}
+
+.GeneralInput .icon {
+  margin-right: 0.4rem;
+  size: 2rem;
+}

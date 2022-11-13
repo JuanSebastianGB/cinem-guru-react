@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import Input from './components/general/Input';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -15,8 +16,8 @@ function App() {
   }, []);
   return (
     <div className="App">
-      App
-      {/* <Input />
+      <Input label="Username" type="text" icon="faUser" />
+      {/* 
       <SelectInput />
       <Button label="test" />
       <SearchBar title="title" /> */}
