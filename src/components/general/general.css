@@ -1,3 +1,6 @@
+.GeneralInput {
+  width: 75%;
+}
 .GeneralInput input {
   border-style: none;
   border-bottom: thin solid rgb(204, 111, 111);
@@ -12,4 +15,68 @@
 .GeneralInput .icon {
   margin-right: 0.4rem;
   size: 2rem;
+}
+
+.GeneralInput {
+  position: relative;
+}
+.GeneralInput .eye-icon {
+  position: absolute;
+  width: 1.2rem;
+  height: 1.2rem;
+  right: 0px;
+  top: 20px;
+}
+
+.SelectInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.SelectInput select {
+  border-style: none;
+  border-bottom: thin solid rgb(204, 111, 111, 1.2);
+}
+
+.SelectInput input:selected {
+  outline: none;
+}
+
+.Button button {
+  color: white;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.SearchBar {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.SearchBar input {
+  border-radius: 20px;
+}
+
+.button-red-dark {
+  background-color: var(--red-primary-color);
+  color: var(--white-primary-color);
+  font-weight: 700;
+}
+
+.button-red-light {
+  background-color: var(--red-secondary-color);
+  color: var(--white-primary-color);
+  font-weight: 700;
+}
+
+.icon-pink {
+  color: var(--pink-color);
 }

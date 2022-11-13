@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './general.css';
 
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import { icons } from '../../icons/icons';
 const Input = ({
@@ -15,23 +16,23 @@ const Input = ({
   const handleInput = (e) => {
     setValue(e.target.value);
   };
+
   return (
-    <>
-      <div className="GeneralInput">
-        {icon ? <FontAwesomeIcon className="icon" icon={icons[icon]} /> : null}
-        <label>
-          {label}
-          <input
-            type={type}
-            className={className ? className : null}
-            // inputAttributes={inputAttributes ? inputAttributes : null}
-            onChange={handleInput}
-          >
-            {value}
-          </input>
-        </label>
-      </div>
-    </>
+    <div className="GeneralInput">
+      {icon ? (
+        <FontAwesomeIcon
+          className={`icon ${className ? className : ''}`}
+          icon={icons[icon]}
+        />
+      ) : null}
+      <label>
+        {label}:
+        <input type={type} onChange={handleInput} value={value} />
+      </label>
+      {type === 'password' && value !== '' ? (
+        <FontAwesomeIcon className="eye-icon" icon={faEye} />
+      ) : null}
+    </div>
   );
 };
 
