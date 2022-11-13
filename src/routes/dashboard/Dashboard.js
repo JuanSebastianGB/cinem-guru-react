@@ -1,13 +1,18 @@
+import PropTypes from 'prop-types';
 import Header from '../../components/navigation/Header';
 import './dashboard.css';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   return (
     <div className="Dashboard">
-      Dashboard
-      <Header />
+      <Header {...props} />
     </div>
   );
+};
+
+Dashboard.propTypes = {
+  setIsLoggedIn: PropTypes.func,
+  userUsername: PropTypes.string,
 };
 
 export default Dashboard;

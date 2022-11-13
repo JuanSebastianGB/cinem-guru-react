@@ -1,4 +1,33 @@
 .Header {
   display: flex;
   width: 100%;
+  color: var(--white-primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--black-primary-color);
+  font-size: 1rem;
+}
+
+.Header img {
+  border-radius: 50%;
+  border: solid thin red;
+  background-size: cover;
+  width: 40px;
+  height: auto;
+}
+
+.Header span {
+  display: flex;
+  align-items: center;
+  color: var(--red-secondary-color);
+  gap: 0.5rem;
+}
+
+.header-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
 }

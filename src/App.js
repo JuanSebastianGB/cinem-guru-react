@@ -27,7 +27,7 @@ function App() {
           setUserUsername={setUserUserName}
         />
       ) : (
-        <Dashboard />
+        <Dashboard userUserName={userUserName} />
       )}
     </div>
   );

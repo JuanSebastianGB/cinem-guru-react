@@ -1,4 +1,5 @@
 .Dashboard {
-  color: beige;
-  width: inherit;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--black-secondary-color);
 }
