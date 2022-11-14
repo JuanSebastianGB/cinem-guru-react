@@ -6,11 +6,11 @@ import './auth.css';
 import Login from './Login';
 import Register from './Register';
 
-const initialState = {
-  _switch: true,
-  username: '',
-  password: '',
-};
+// const initialState = {
+//   _switch: true,
+//   username: '',
+//   password: '',
+// };
 const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
   const [_switch, set_switch] = useState(true);
   const [username, setUsername] = useState('');

@@ -6,7 +6,7 @@ const Header = ({ setIsLoggedIn, userUserName }) => {
     <nav className="Header">
       <div>Cinema Guru</div>
       <div className="header-right">
-        <img src="https://picsum.photos/100/100" />
+        <img alt="random" src="https://picsum.photos/100/100" />
         <p> Welcome {userUserName}</p>
         <span>
           <svg
