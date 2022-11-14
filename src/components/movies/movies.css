@@ -6,4 +6,11 @@
   padding: 0 0.5rem 0.2rem;
   cursor: pointer;
   font-weight: 600;
+  display: inline;
+  transition: all var(--transition-time);
+}
+
+.movie-tag-bg-red {
+  background-color: var(--red-secondary-color);
+  transition: all var(--transition-time);
 }

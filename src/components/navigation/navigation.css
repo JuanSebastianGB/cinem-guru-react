@@ -87,3 +87,9 @@
 .activities .Activity {
   padding: 0 1rem;
 }
+
+.Sidebar a {
+  text-decoration: none;
+  color: var(--white-secondary-color);
+  font-weight: 500;
+}

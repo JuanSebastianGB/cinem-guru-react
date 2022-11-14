@@ -2,7 +2,7 @@ import Tag from '../../components/movies/Tag';
 
 const HomePage = () => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div>
       <Tag genre="Acn" />
       <Tag genre="Action" />
       <Tag genre="Romance" />

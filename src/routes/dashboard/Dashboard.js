@@ -13,8 +13,8 @@ const Dashboard = (props) => {
       <Header {...props} />
 
       <div className="dashboard-content">
-        <SideBar />
         <BrowserRouter>
+          <SideBar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/favorites" element={<Favorites />} />

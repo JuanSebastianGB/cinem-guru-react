@@ -6,7 +6,10 @@ const Tag = ({ genre, filter, genres, setGenres }) => {
   const [selected, setSelected] = useState(false);
   const handleTag = () => setSelected(!selected);
   return (
-    <li onClick={handleTag} className="Tag">
+    <li
+      onClick={handleTag}
+      className={`Tag ${selected ? 'movie-tag-bg-red' : ''}`}
+    >
       {genre}
     </li>
   );

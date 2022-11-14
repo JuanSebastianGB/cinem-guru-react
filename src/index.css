@@ -33,6 +33,8 @@ code {
   --white-primary-color: white;
   --white-secondary-color: #f2f2f2;
   --pink-color: #fad0d9;
+
+  --transition-time: 0.7s;
 }
 
 h4 {
