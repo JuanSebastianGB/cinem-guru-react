@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { axiosInterceptor } from '../utilities/axios';
+import { baseUrl } from '../utilities/baseurl';
 
-const baseUrl = 'http://localhost:8000/api/';
 const routesUrl = {
   LOGIN: 'auth/login',
   REGISTER: 'auth/register',
@@ -27,6 +27,8 @@ export const registerService = async (body) => {
 
 export const authService = async () => {
   const url = `${baseUrl}${routesUrl.AUTH}`;
+  const token = localStorage.getItem('accessToken');
+  if (!token) return;
   try {
     return await axiosInterceptor.post(url);
   } catch (error) {

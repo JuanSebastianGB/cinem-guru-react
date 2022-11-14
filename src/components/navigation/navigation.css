@@ -31,3 +31,59 @@
   align-items: center;
   gap: 2rem;
 }
+
+.header-right span {
+  cursor: pointer;
+}
+
+.Sidebar {
+  background-color: var(--red-primary-color);
+  color: var(--white-secondary-color);
+  max-height: inherit;
+  width: 218px;
+}
+
+.Sidebar ul {
+  padding-left: 0;
+}
+.Sidebar li {
+  list-style-type: none;
+  padding: 0.5rem 1rem;
+  font-size: 15px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.Sidebar .menu-item:hover {
+  background-color: var(--red-secondary-color);
+}
+
+.Sidebar .next-row {
+  opacity: 0;
+  position: absolute;
+  right: 14px;
+}
+
+.Sidebar .menu-item:hover .next-row {
+  opacity: 1;
+}
+
+.activities {
+  background-color: var(--black-secondary-color);
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0 auto;
+}
+.activities h3 {
+  text-decoration: underline;
+  text-align: center;
+}
+
+.activities .Activity {
+  padding: 0 1rem;
+}

@@ -9,7 +9,7 @@
 .Login,
 .Register {
   background-color: var(--white-primary-color);
-  height: 100%;
+  height: 360px;
   display: flex;
   flex-direction: column;
   align-items: center;

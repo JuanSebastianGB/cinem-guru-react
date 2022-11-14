@@ -27,7 +27,7 @@ function App() {
           setUserUsername={setUserUserName}
         />
       ) : (
-        <Dashboard userUserName={userUserName} />
+        <Dashboard userUserName={userUserName} setIsLoggedIn={setIsLoggedIn} />
       )}
     </div>
   );

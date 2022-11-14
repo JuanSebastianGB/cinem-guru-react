@@ -2,13 +2,17 @@ import PropTypes from 'prop-types';
 import './navigation.css';
 
 const Header = ({ setIsLoggedIn, userUserName }) => {
+  const logout = () => {
+    localStorage.removeItem('accessToken');
+    setIsLoggedIn(false);
+  };
   return (
     <nav className="Header">
       <div>Cinema Guru</div>
       <div className="header-right">
         <img alt="random" src="https://picsum.photos/100/100" />
         <p> Welcome {userUserName}</p>
-        <span>
+        <span onClick={logout}>
           <svg
             width="16"
             height="16"

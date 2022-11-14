@@ -1,0 +1,9 @@
+.Tag {
+  list-style-type: none;
+  color: var(--white-primary-color);
+  border: thin solid var(--red-secondary-color);
+  border-radius: 25px;
+  padding: 0 0.5rem 0.2rem;
+  cursor: pointer;
+  font-weight: 600;
+}

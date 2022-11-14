@@ -1,4 +1,5 @@
 import {
+  faArrowRight,
   faEye,
   faKey,
   faPlus,
@@ -10,4 +11,5 @@ export const icons = {
   faKey,
   faPlus,
   faEye,
+  faArrowRight,
 };
