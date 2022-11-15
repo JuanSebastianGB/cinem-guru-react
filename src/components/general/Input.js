@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './general.css';
-
 import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { icons } from '../../icons/icons';
+import './general.css';
+
 const Input = ({
   label,
   type,
@@ -11,6 +11,7 @@ const Input = ({
   value,
   setValue,
   icon,
+  dark,
   inputAttributes,
 }) => {
   const handleInput = (e) => {
@@ -18,7 +19,7 @@ const Input = ({
   };
 
   return (
-    <div className="GeneralInput">
+    <div className={`GeneralInput ${dark ? 'input-dark' : ''}`}>
       {icon ? (
         <FontAwesomeIcon
           className={`icon ${className ? className : ''}`}

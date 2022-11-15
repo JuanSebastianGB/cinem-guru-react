@@ -1,15 +1,12 @@
-import Tag from '../../components/movies/Tag';
+import { useState } from 'react';
+import Filter from '../../components/movies/Filter';
 
 const HomePage = () => {
+  const [title, setTitle] = useState('');
+
   return (
-    <div>
-      <Tag genre="Acn" />
-      <Tag genre="Action" />
-      <Tag genre="Romance" />
-      <Tag genre="Documentary" />
-      <Tag genre="Documentary dfknjkdfng" />
-      <Tag genre="Documentary" />
-      <Tag genre="Documentary" />
+    <div className="HomePage">
+      <Filter title={title} setTitle={setTitle} />
     </div>
   );
 };

@@ -14,3 +14,31 @@
   background-color: var(--red-secondary-color);
   transition: all var(--transition-time);
 }
+
+.Filter {
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+}
+
+.filter-left {
+  min-width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+}
+.filter-right {
+  max-width: 60%;
+  padding: 1rem;
+  display: flex;
+  flex-flow: wrap;
+}
+.filter-right .Tag {
+  margin-right: 0.5rem;
+}
+
+.Filter .filter-inputs {
+  display: flex;
+  gap: 1rem;
+}

@@ -3,10 +3,11 @@
 }
 .GeneralInput input {
   border-style: none;
-  border-bottom: thin solid rgb(204, 111, 111);
+  border-bottom: medium solid rgb(204, 111, 111);
   display: block;
   padding: 0.2rem;
   width: 100%;
+  background-color: transparent;
 }
 .GeneralInput input:focus-visible {
   outline: none;
@@ -28,6 +29,14 @@
   top: 20px;
 }
 
+.GeneralInput.input-dark {
+  color: var(--white-secondary-color);
+}
+
+.GeneralInput.input-dark input {
+  color: var(--white-secondary-color);
+}
+
 .SelectInput {
   display: flex;
   flex-direction: column;
@@ -35,11 +44,26 @@
 
 .SelectInput select {
   border-style: none;
-  border-bottom: thin solid rgb(204, 111, 111, 1.2);
+  border-bottom: medium solid rgb(204, 111, 111, 1.2);
+  background-color: transparent;
+  padding: 0.2rem;
+  font-size: 0.8rem;
 }
 
 .SelectInput input:selected {
   outline: none;
+}
+
+.SelectInput.select-dark {
+  color: var(--white-secondary-color);
+}
+.SelectInput.select-dark select {
+  color: var(--white-secondary-color);
+}
+
+.SelectInput.select-dark option {
+  background-color: var(--black-secondary-color);
+  color: var(--white-secondary-color);
 }
 
 .Button button {
@@ -59,10 +83,31 @@
   justify-content: flex-start;
   gap: 0.3rem;
   align-items: center;
+  background-color: white;
+  border-radius: 30px;
+  padding: 0.3rem 1rem;
+  width: 100%;
+  color: var(--gray-secondary-color);
 }
 
 .SearchBar input {
-  border-radius: 20px;
+  width: 90%;
+  border: none;
+  overflow-x: hidden;
+  background-color: transparent;
+}
+
+.SearchBar input:focus-visible {
+  outline: 0;
+}
+
+.SearchBar.searchbar-dark {
+  background-color: var(--gray-primary-color);
+  color: var(--gray-third-color);
+}
+
+.searchbar-dark input {
+  color: var(--white-secondary-color);
 }
 
 .button-red-dark {
