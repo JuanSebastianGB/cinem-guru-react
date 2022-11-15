@@ -7,7 +7,7 @@
   display: block;
   padding: 0.2rem;
   width: 100%;
-  background-color: transparent;
+  background-color: var(--gray-primary-color);
 }
 .GeneralInput input:focus-visible {
   outline: none;
@@ -45,7 +45,7 @@
 .SelectInput select {
   border-style: none;
   border-bottom: medium solid rgb(204, 111, 111, 1.2);
-  background-color: transparent;
+  background-color: var(--gray-primary-color);
   padding: 0.2rem;
   font-size: 0.8rem;
 }

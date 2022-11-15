@@ -42,3 +42,86 @@
   display: flex;
   gap: 1rem;
 }
+
+.MovieCard {
+  width: 340px;
+  height: 450px;
+  background-color: var(--gray-primary-color);
+  color: black;
+  transition: all var(--transition-time);
+}
+.MovieCard:hover {
+  transform: scale(1.1);
+  transition: all var(--transition-time);
+}
+
+.MovieCard img {
+  width: 340px;
+  height: 340px;
+  background-size: cover;
+}
+
+.MovieCard section {
+  position: relative;
+}
+
+.movie-card-cover {
+  position: absolute;
+  height: 45px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  opacity: 0.5;
+  bottom: 3px;
+}
+
+.movie-card-title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  position: absolute;
+  bottom: 0.8rem;
+  margin: 0;
+  margin-left: 10px;
+  padding: 0;
+  width: 100%;
+}
+
+.movie-card-resume {
+  color: var(--white-secondary-color);
+  font-size: 13px;
+  margin: 0;
+  padding: 0 0.8rem;
+}
+
+.MovieCard li {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  width: 100%;
+  height: 40px;
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  align-items: center;
+}
+
+.MovieCard svg {
+  color: white;
+  cursor: pointer;
+  transition: all var(--transition-secondary-time);
+}
+
+.MovieCard svg path {
+  stroke: var(--white-primary-color);
+  stroke-width: 15;
+  transition: all var(--transition-secondary-time);
+}
+
+.is-favorite path,
+.is-watch-later path {
+  color: transparent;
+  transition: all var(--transition-secondary-time);
+}
