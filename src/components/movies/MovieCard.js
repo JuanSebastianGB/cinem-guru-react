@@ -5,24 +5,35 @@ import { useEffect, useState } from 'react';
 import { getFavorites } from '../../services/favorites.service';
 import { getWatchLater } from '../../services/watchlater.service';
 import './movies.css';
+import notFoundImage from './notfound.png';
 
 const MovieCard = ({ movie }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
+  const [errorImage, setErrorImage] = useState(false);
 
   const handleFavorite = () => setIsFavorite(!isFavorite);
   const handleWatchLater = () => setIsWatchLater(!isWatchLater);
 
   useEffect(() => {
-    getFavorites().then(console.log).catch(console.log);
-    getWatchLater().then(console.log).then(console.log);
+    getFavorites()
+      .then((data) => data)
+      .catch(console.log);
+    getWatchLater()
+      .then((data) => data)
+      .then(console.log);
   }, []);
   return (
     <div className="MovieCard">
       <section>
-        <img src="https://picsum.photos/100/100" alt=""></img>
+        <img
+          src={movie.image[0] ? movie.image[0] : notFoundImage}
+          alt="main presentation"
+          onError={(e) => (e.currentTarget.src = notFoundImage)}
+        ></img>
         <div className="movie-card-cover"></div>
-        <p className="movie-card-title">Title</p>
+
+        <p className="movie-card-title">{movie.title}</p>
         <li>
           <FontAwesomeIcon
             className={`${isFavorite ? 'is-favorite' : ''}`}
@@ -38,10 +49,7 @@ const MovieCard = ({ movie }) => {
           />
         </li>
       </section>
-      <p className="movie-card-resume">
-        A outsider comes to town and meets Three people in town as she meets
-        them she gets each of them to b..
-      </p>
+      <p className="movie-card-resume">{movie.synopsis}</p>
       <div className="movie-card-tags"></div>
     </div>
   );

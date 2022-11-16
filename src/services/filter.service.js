@@ -13,3 +13,11 @@ export const getDataWithCustomFilter = async () => {
     throw error;
   }
 };
+export const loadMovies = async (page) => {
+  const url = `${baseUrl}${routesUrl.CUSTOM_FILTER}?page=${page}`;
+  try {
+    return await axiosInterceptor.get(url);
+  } catch (error) {
+    throw error;
+  }
+};
