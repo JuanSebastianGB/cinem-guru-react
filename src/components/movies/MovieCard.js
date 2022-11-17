@@ -2,6 +2,7 @@ import { faClockFour, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { addToFavoriteOrWatchLater } from '../../services/addtowatchlaterorfavorite.service';
 import { getFavorites } from '../../services/favorites.service';
 import { getWatchLater } from '../../services/watchlater.service';
 import './movies.css';
@@ -10,10 +11,19 @@ import notFoundImage from './notfound.png';
 const MovieCard = ({ movie }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
-  const [errorImage, setErrorImage] = useState(false);
 
-  const handleFavorite = () => setIsFavorite(!isFavorite);
-  const handleWatchLater = () => setIsWatchLater(!isWatchLater);
+  const handleFavorite = async () => {
+    setIsFavorite((prevState) => !prevState);
+    await addToFavoriteOrWatchLater('favorite', movie.secondaryId)
+      .then(console.log)
+      .catch(console.log);
+  };
+  const handleWatchLater = async () => {
+    setIsWatchLater((prevState) => !prevState);
+    await addToFavoriteOrWatchLater('watchlater', movie.secondaryId)
+      .then(console.log)
+      .catch(console.log);
+  };
 
   useEffect(() => {
     getFavorites()

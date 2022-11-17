@@ -44,6 +44,7 @@
 }
 
 .MovieCard {
+  cursor: pointer;
   width: 340px;
   height: 450px;
   background-color: var(--gray-primary-color);

@@ -39,7 +39,7 @@ const HomePage = () => {
         setTitle={setTitle}
       />
       <Container>
-        <section className="homepage-movies">
+        <section className="grid-movies">
           {movies.length > 0 &&
             movies.map((movie) => (
               <MovieCard key={movie.id} movie={movieAdapter(movie)} />
