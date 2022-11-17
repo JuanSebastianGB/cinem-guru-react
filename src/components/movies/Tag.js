@@ -1,10 +1,26 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { removeColonFromStart } from '../../utilities/string.handle';
 import './movies.css';
 
 const Tag = ({ genre, filter, genres, setGenres }) => {
   const [selected, setSelected] = useState(false);
-  const handleTag = () => setSelected(!selected);
+  const handleTag = () => {
+    if (selected) {
+      const result = genres
+        .split(',')
+        .filter((element) => element !== genre)
+        .join(',');
+      setGenres(removeColonFromStart(result));
+      setSelected(false);
+    } else {
+      const genresList = genres.split(',');
+      genresList.push(genre);
+      const result = genresList.join(',');
+      setGenres(removeColonFromStart(result));
+      setSelected(true);
+    }
+  };
   return (
     <span>
       <li
@@ -20,7 +36,7 @@ const Tag = ({ genre, filter, genres, setGenres }) => {
 Tag.propTypes = {
   genre: PropTypes.string,
   filter: PropTypes.bool,
-  genres: PropTypes.arrayOf('string'),
+  genres: PropTypes.string,
   setGenres: PropTypes.func,
 };
 

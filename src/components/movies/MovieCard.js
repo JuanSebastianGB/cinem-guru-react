@@ -21,7 +21,7 @@ const MovieCard = ({ movie }) => {
       .catch(console.log);
     getWatchLater()
       .then((data) => data)
-      .then(console.log);
+      .catch(console.log);
   }, []);
   return (
     <div className="MovieCard">

@@ -20,20 +20,49 @@ const tags = [
   'Fantasy',
 ];
 const options = ['latest', 'oldest', 'highestrated', 'lowestrated'];
-const Filter = ({ title, setTitle }) => {
+const Filter = ({
+  minYear,
+  setMinYear,
+  maxYear,
+  setMaxYear,
+  sort,
+  setSort,
+  genres,
+  setGenres,
+  title,
+  setTitle,
+}) => {
   return (
     <div className="Filter">
       <div className="filter-left">
         <SearchBar dark title={title} setTitle={setTitle} />
         <div className="filter-inputs">
-          <Input dark label="Min Date" type="number" />
-          <Input dark label="Max Date" type="number" />
-          <SelectInput dark options={options} label="Sort" />
+          <Input
+            value={minYear}
+            setValue={setMinYear}
+            dark
+            label="Min Date"
+            type="number"
+          />
+          <Input
+            value={maxYear}
+            setValue={setMaxYear}
+            dark
+            label="Max Date"
+            type="number"
+          />
+          <SelectInput
+            value={sort}
+            setValue={setSort}
+            dark
+            options={options}
+            label="Sort"
+          />
         </div>
       </div>
       <div className="filter-right">
         {tags.map((tag, index) => (
-          <Tag key={index} genre={tag} />
+          <Tag genres={genres} setGenres={setGenres} key={index} genre={tag} />
         ))}
       </div>
     </div>

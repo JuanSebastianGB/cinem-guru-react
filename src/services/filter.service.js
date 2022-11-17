@@ -5,8 +5,15 @@ const routesUrl = {
   CUSTOM_FILTER: 'titles/advancedsearch',
 };
 
-export const getDataWithCustomFilter = async () => {
-  const url = `${baseUrl}${routesUrl.CUSTOM_FILTER}`;
+export const getDataWithCustomFilter = async ({
+  page,
+  minYear,
+  maxYear,
+  genres,
+  title,
+  sort,
+}) => {
+  const url = `${baseUrl}${routesUrl.CUSTOM_FILTER}?page=${page}&minYear=${minYear}&maxYear=${maxYear}&genres=${genres}&title=${title}&sort=${sort}`;
   try {
     return await axiosInterceptor.get(url);
   } catch (error) {

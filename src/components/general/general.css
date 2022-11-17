@@ -85,6 +85,15 @@
   align-items: center;
 }
 
+.Button .load-button {
+  display: block;
+  width: 150px;
+  padding: 1rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  background-color: var(--red-primary-color);
+}
+
 .SearchBar {
   display: flex;
   justify-content: flex-start;
