@@ -33,7 +33,7 @@ const Input = ({
       ) : null}
       <label>
         {label}:
-        <input type={type} onChange={handleInput} value={value} />
+        <input required type={type} onChange={handleInput} value={value} />
       </label>
       {type === 'password' && value !== '' ? (
         <FontAwesomeIcon className="eye-icon" icon={faEye} />

@@ -20,10 +20,6 @@
   outline: none;
 }
 
-.GeneralInput.error input {
-  border: thin dotted var(--red-primary-color);
-}
-
 .GeneralInput .icon {
   margin-right: 0.4rem;
   size: 2rem;

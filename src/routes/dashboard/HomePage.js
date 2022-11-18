@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { SpinnerCircular } from 'spinners-react';
 import { movieAdapter } from '../../adapters/movie.adapter';
 import Button from '../../components/general/Button';
 import Container from '../../components/general/Container';
@@ -15,15 +16,24 @@ const HomePage = () => {
   const [sort, setSort] = useState('');
   const [title, setTitle] = useState('');
   const [page, setPage] = useState(1);
+  const [load, setLoad] = useState(false);
 
   const loadMovies = (e) => setPage((prev) => prev + 1);
 
   useEffect(() => {
+    setLoad(true);
     getDataWithCustomFilter({ page, minYear, maxYear, genres, title, sort })
       .then((data) => setMovies(data.data.titles))
-      .catch(console.log);
+      .catch(console.log)
+      .finally(() => setLoad(false));
   }, [page, minYear, maxYear, genres, title, sort]);
 
+  if (load)
+    return (
+      <div className="center">
+        <SpinnerCircular color="white" />
+      </div>
+    );
   return (
     <div className="HomePage">
       <Filter

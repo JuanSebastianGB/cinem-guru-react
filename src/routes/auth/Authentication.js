@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
 import { lazy, useState } from 'react';
+import { SpinnerCircular } from 'spinners-react';
 import Button from '../../components/general/Button';
 import { loginService, registerService } from '../../services/auth.service';
 import './auth.css';
-
-// import Login from './Login';
-// import Register from './Register';
 
 const Login = lazy(() => import('./Login'));
 const Register = lazy(() => import('./Register'));
@@ -15,30 +13,37 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [load, setLoad] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (_switch) {
       try {
+        setLoad(true);
         const response = await loginService({ username, password });
         if (response?.data) {
           localStorage.setItem(
             'accessToken',
             `Bearer ${response.data.accessToken}`
           );
+          setLoad(false);
           setIsLoggedIn(true);
           setUserUsername(username);
         }
       } catch (error) {
-        setError(error.response.data.message);
+        if (error?.response?.data?.message)
+          setError(error.response.data.message);
+        else setError(error.message);
         setUsername('');
         setPassword('');
+        setLoad(false);
         setTimeout(() => {
           setError('');
         }, 3000);
       }
     } else {
       try {
+        setLoad(true);
         const response = await registerService({ username, password });
         if (response?.data) {
           localStorage.setItem(
@@ -46,12 +51,16 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
             `Bearer ${response.data.accessToken}`
           );
         }
+        setLoad(false);
         setIsLoggedIn(true);
         setUserUsername(username);
       } catch (error) {
-        setError(error.response.data.message);
+        if (error?.response?.data?.message)
+          setError(error.response.data.message);
+        else setError(error.message);
         setUsername('');
         setPassword('');
+        setLoad(false);
         setTimeout(() => {
           setError('');
         }, 3000);
@@ -69,6 +78,8 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
     setPassword('');
     set_switch(false);
   };
+
+  if (load) return <SpinnerCircular color="white" />;
 
   return (
     <div className="Authentication">

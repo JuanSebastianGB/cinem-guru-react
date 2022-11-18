@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { SpinnerCircular } from 'spinners-react';
 import { movieAdapter } from '../../adapters/movie.adapter';
 import Container from '../../components/general/Container';
 import Title from '../../components/general/Title';
@@ -7,12 +8,21 @@ import { getWatchLater } from '../../services/watchlater.service';
 
 const WatchLater = () => {
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState({});
+  const [load, setLoad] = useState(false);
   useEffect(() => {
+    setLoad(true);
     getWatchLater()
       .then((data) => setMovies(data.data))
-      .catch((e) => setError(JSON.stringify(e)));
+      .catch((e) => e)
+      .finally(() => setLoad(false));
   }, []);
+
+  if (load)
+    return (
+      <div className="center">
+        <SpinnerCircular color="white" />
+      </div>
+    );
   return (
     <>
       <Container>
