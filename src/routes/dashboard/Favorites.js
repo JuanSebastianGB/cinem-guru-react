@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { SpinnerCircular } from 'spinners-react';
 import { movieAdapter } from '../../adapters/movie.adapter';
+import CenterContent from '../../components/general/CenterContent';
 import Container from '../../components/general/Container';
 import Title from '../../components/general/Title';
 import MovieCard from '../../components/movies/MovieCard';
@@ -19,9 +20,9 @@ const Favorites = () => {
 
   if (load)
     return (
-      <div className="center">
+      <CenterContent>
         <SpinnerCircular color="white" />
-      </div>
+      </CenterContent>
     );
   return (
     <>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { SpinnerCircular } from 'spinners-react';
 import { movieAdapter } from '../../adapters/movie.adapter';
 import Button from '../../components/general/Button';
+import CenterContent from '../../components/general/CenterContent';
 import Container from '../../components/general/Container';
 import Filter from '../../components/movies/Filter';
 import MovieCard from '../../components/movies/MovieCard';
@@ -28,12 +29,6 @@ const HomePage = () => {
       .finally(() => setLoad(false));
   }, [page, minYear, maxYear, genres, title, sort]);
 
-  if (load)
-    return (
-      <div className="center">
-        <SpinnerCircular color="white" />
-      </div>
-    );
   return (
     <div className="HomePage">
       <Filter
@@ -48,19 +43,25 @@ const HomePage = () => {
         title={title}
         setTitle={setTitle}
       />
-      <Container>
-        <section className="grid-movies">
-          {movies.length > 0 &&
-            movies.map((movie) => (
-              <MovieCard key={movie.id} movie={movieAdapter(movie)} />
-            ))}
-        </section>
-        <Button
-          className="load-button"
-          label="Load More..."
-          onClick={loadMovies}
-        />
-      </Container>
+      {!load ? (
+        <Container>
+          <section className="grid-movies">
+            {movies.length > 0 &&
+              movies.map((movie) => (
+                <MovieCard key={movie.id} movie={movieAdapter(movie)} />
+              ))}
+          </section>
+          <Button
+            className="load-button"
+            label="Load More..."
+            onClick={loadMovies}
+          />
+        </Container>
+      ) : (
+        <CenterContent>
+          <SpinnerCircular color="white" />
+        </CenterContent>
+      )}
     </div>
   );
 };
