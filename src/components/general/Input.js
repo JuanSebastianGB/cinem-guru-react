@@ -12,6 +12,7 @@ const Input = ({
   setValue,
   icon,
   dark,
+  error,
   inputAttributes,
 }) => {
   const handleInput = (e) => {
@@ -19,7 +20,11 @@ const Input = ({
   };
 
   return (
-    <div className={`GeneralInput ${dark ? 'input-dark' : ''}`}>
+    <div
+      className={`GeneralInput ${error !== '' ? 'error' : ''} ${
+        dark ? 'input-dark' : ''
+      }`}
+    >
       {icon ? (
         <FontAwesomeIcon
           className={`icon ${className ? className : ''}`}

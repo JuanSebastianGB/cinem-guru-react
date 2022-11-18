@@ -3,7 +3,7 @@ import Button from '../../components/general/Button';
 import Input from '../../components/general/Input';
 import './auth.css';
 
-const Register = ({ username, password, setUsername, setPassword }) => {
+const Register = ({ username, password, setUsername, setPassword, error }) => {
   return (
     <div className="Register">
       <h4>Create a new account</h4>
@@ -14,6 +14,7 @@ const Register = ({ username, password, setUsername, setPassword }) => {
         type="text"
         value={username}
         setValue={setUsername}
+        error={error}
       />
       <Input
         className="icon-pink"
@@ -22,6 +23,7 @@ const Register = ({ username, password, setUsername, setPassword }) => {
         type="password"
         value={password}
         setValue={setPassword}
+        error={error}
       />
       <Button label="Sign Up" icon="faPlus" />
     </div>

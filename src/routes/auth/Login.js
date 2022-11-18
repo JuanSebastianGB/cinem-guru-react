@@ -3,7 +3,7 @@ import Button from '../../components/general/Button';
 import Input from '../../components/general/Input';
 import './auth.css';
 
-const Login = ({ username, password, setUsername, setPassword }) => {
+const Login = ({ username, password, setUsername, setPassword, error }) => {
   return (
     <div className="Login">
       <h4>Sign in with your account</h4>
@@ -14,6 +14,7 @@ const Login = ({ username, password, setUsername, setPassword }) => {
         type="text"
         value={username}
         setValue={setUsername}
+        error={error}
       />
       <Input
         className="icon-pink"
@@ -22,6 +23,7 @@ const Login = ({ username, password, setUsername, setPassword }) => {
         type="password"
         value={password}
         setValue={setPassword}
+        error={error}
       />
       <Button label="Sign In" icon="faKey" />
     </div>

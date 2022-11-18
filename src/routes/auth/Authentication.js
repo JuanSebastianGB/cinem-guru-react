@@ -14,29 +14,44 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
   const [_switch, set_switch] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (_switch) {
-      const response = await loginService({ username, password });
-      if (response?.data) {
-        localStorage.setItem(
-          'accessToken',
-          `Bearer ${response.data.accessToken}`
-        );
-        setIsLoggedIn(true);
-        setUserUsername(username);
+      try {
+        const response = await loginService({ username, password });
+        if (response?.data) {
+          localStorage.setItem(
+            'accessToken',
+            `Bearer ${response.data.accessToken}`
+          );
+          setIsLoggedIn(true);
+          setUserUsername(username);
+        }
+      } catch (error) {
+        setError(error.response.data.message);
+        setTimeout(() => {
+          setError('');
+        }, 3000);
       }
     } else {
-      const response = await registerService({ username, password });
-      if (response?.data) {
-        localStorage.setItem(
-          'accessToken',
-          `Bearer ${response.data.accessToken}`
-        );
+      try {
+        const response = await registerService({ username, password });
+        if (response?.data) {
+          localStorage.setItem(
+            'accessToken',
+            `Bearer ${response.data.accessToken}`
+          );
+        }
+        setIsLoggedIn(true);
+        setUserUsername(username);
+      } catch (error) {
+        setError(error.response.data.message);
+        setTimeout(() => {
+          setError('');
+        }, 3000);
       }
-      setIsLoggedIn(true);
-      setUserUsername(username);
     }
   };
 
@@ -57,12 +72,16 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
         />
       </div>
       <form onSubmit={handleSubmit}>
+        <div className="authentication-error">
+          {error.length !== '' && error}
+        </div>
         {_switch ? (
           <Login
             username={username}
             setUsername={setUsername}
             password={password}
             setPassword={setPassword}
+            error={error}
           />
         ) : (
           <Register
@@ -70,6 +89,7 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
             setUsername={setUsername}
             password={password}
             setPassword={setPassword}
+            error={error}
           />
         )}
       </form>

@@ -15,10 +15,13 @@
   padding: 0.2rem;
   width: 100%;
   background-color: transparent;
-  /* background-color: var(--gray-primary-color); */
 }
 .GeneralInput input:focus-visible {
   outline: none;
+}
+
+.GeneralInput.error input {
+  border: thin dotted var(--red-primary-color);
 }
 
 .GeneralInput .icon {

@@ -13,7 +13,7 @@ export const loginService = async (body) => {
   try {
     return await axios.post(url, body);
   } catch (error) {
-    return `${error.message} ${error.response.statusText}`;
+    throw error;
   }
 };
 export const registerService = async (body) => {
@@ -21,7 +21,7 @@ export const registerService = async (body) => {
   try {
     return await axios.post(url, body);
   } catch (error) {
-    return `${error.message} ${error.response.statusText}`;
+    throw error;
   }
 };
 
