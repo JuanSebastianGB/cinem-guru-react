@@ -1,16 +1,15 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { lazy, useState } from 'react';
 import Button from '../../components/general/Button';
 import { loginService, registerService } from '../../services/auth.service';
 import './auth.css';
-import Login from './Login';
-import Register from './Register';
 
-// const initialState = {
-//   _switch: true,
-//   username: '',
-//   password: '',
-// };
+// import Login from './Login';
+// import Register from './Register';
+
+const Login = lazy(() => import('./Login'));
+const Register = lazy(() => import('./Register'));
+
 const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
   const [_switch, set_switch] = useState(true);
   const [username, setUsername] = useState('');

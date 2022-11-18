@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
-import { SpinnerCircular } from 'spinners-react';
+import { lazy, useEffect, useState } from 'react';
 import './App.css';
-import Authentication from './routes/auth/Authentication';
-import Dashboard from './routes/dashboard/Dashboard';
+// import Authentication from './routes/auth/Authentication';
+// import Dashboard from './routes/dashboard/Dashboard';
 import { authService } from './services/auth.service';
+
+const Dashboard = lazy(() => import('./routes/dashboard/Dashboard'));
+const Authentication = lazy(() => import('./routes/auth/Authentication'));
 
 function App() {
   const [userUserName, setUserUserName] = useState('');
@@ -24,16 +26,10 @@ function App() {
       {isLoggedIn ? (
         <Dashboard userUserName={userUserName} setIsLoggedIn={setIsLoggedIn} />
       ) : (
-        <div>
-          {userUserName !== '' ? (
-            <Authentication
-              setIsLoggedIn={setIsLoggedIn}
-              setUserUsername={setUserUserName}
-            />
-          ) : (
-            <SpinnerCircular color="white" />
-          )}
-        </div>
+        <Authentication
+          setIsLoggedIn={setIsLoggedIn}
+          setUserUsername={setUserUserName}
+        />
       )}
     </div>
   );
