@@ -78,7 +78,7 @@
   flex-direction: column;
   width: 90%;
   margin: 0 auto;
-  /* display: none; */
+  display: none;
 }
 .activities h3 {
   text-decoration: underline;

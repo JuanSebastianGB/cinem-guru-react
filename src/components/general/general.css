@@ -14,7 +14,8 @@
   display: block;
   padding: 0.2rem;
   width: 100%;
-  background-color: var(--gray-primary-color);
+  background-color: transparent;
+  /* background-color: var(--gray-primary-color); */
 }
 .GeneralInput input:focus-visible {
   outline: none;
