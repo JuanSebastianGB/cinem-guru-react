@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
+import { SpinnerCircular } from 'spinners-react';
 import './App.css';
 import Authentication from './routes/auth/Authentication';
 import Dashboard from './routes/dashboard/Dashboard';
 import { authService } from './services/auth.service';
-// const data = ['default', 'latest', 'oldest', 'highest Rated', 'Lowest Rated'];
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userUserName, setUserUserName] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     authService()
@@ -21,13 +21,19 @@ function App() {
   }, [isLoggedIn]);
   return (
     <div className="App">
-      {!isLoggedIn ? (
-        <Authentication
-          setIsLoggedIn={setIsLoggedIn}
-          setUserUsername={setUserUserName}
-        />
-      ) : (
+      {isLoggedIn ? (
         <Dashboard userUserName={userUserName} setIsLoggedIn={setIsLoggedIn} />
+      ) : (
+        <div>
+          {userUserName !== '' ? (
+            <Authentication
+              setIsLoggedIn={setIsLoggedIn}
+              setUserUsername={setUserUserName}
+            />
+          ) : (
+            <SpinnerCircular color="white" />
+          )}
+        </div>
       )}
     </div>
   );
