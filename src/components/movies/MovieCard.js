@@ -73,7 +73,9 @@ const MovieCard = ({ movie }) => {
       <p className="movie-card-resume">{movie.synopsis}</p>
       <div className="movie-card-tags">
         {movie.genres
-          ? movie.genres.map((movieGenre) => <Tag genre={movieGenre} />)
+          ? movie.genres.map((movieGenre, index) => (
+              <Tag key={index} genre={movieGenre} />
+            ))
           : null}
       </div>
     </div>

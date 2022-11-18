@@ -40,7 +40,7 @@
   background-color: var(--red-primary-color);
   color: var(--white-secondary-color);
   max-height: inherit;
-  width: 218px;
+  max-width: 200px;
 }
 
 .Sidebar ul {
@@ -76,8 +76,9 @@
   background-color: var(--black-secondary-color);
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 90%;
   margin: 0 auto;
+  /* display: none; */
 }
 .activities h3 {
   text-decoration: underline;
@@ -85,11 +86,24 @@
 }
 
 .activities .Activity {
-  padding: 0 1rem;
+  width: 100%;
 }
 
 .Sidebar a {
   text-decoration: none;
   color: var(--white-secondary-color);
   font-weight: 500;
+}
+
+.Sidebar .selected {
+  background-color: var(--red-secondary-color);
+}
+
+.sidebar-text-content {
+  display: none;
+}
+
+.Sidebar:hover .sidebar-text-content,
+.Sidebar:hover .activities {
+  display: block;
 }
