@@ -85,12 +85,13 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
     <div className="Authentication">
       <div className="selection">
         <Button
-          className={_switch ? 'button-red-dark' : 'button-red-light'}
+          autoFocus
+          className={_switch ? 'button-red-light' : 'button-red-dark'}
           label="Sign In"
           onClick={handleSignIn}
         />
         <Button
-          className={!_switch ? 'button-red-dark' : 'button-red-light'}
+          className={!_switch ? 'button-red-light' : 'button-red-dark'}
           label="Sign Up"
           onClick={handleSignUp}
         />

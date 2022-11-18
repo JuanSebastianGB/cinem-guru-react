@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { icons } from '../../icons/icons';
 import './general.css';
 
-const Button = ({ label, className, onClick, icon }) => {
+const Button = ({ label, className, onClick, icon, autoFocus }) => {
   return (
     <div className="Button">
       <button className={className} onClick={onClick}>
