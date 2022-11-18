@@ -7,32 +7,43 @@ import { getFavorites } from '../../services/favorites.service';
 import { getWatchLater } from '../../services/watchlater.service';
 import './movies.css';
 import notFoundImage from './notfound.png';
+import Tag from './Tag';
 
 const MovieCard = ({ movie }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
 
   const handleFavorite = async () => {
-    setIsFavorite((prevState) => !prevState);
+    setIsFavorite(!isFavorite);
     await addToFavoriteOrWatchLater('favorite', movie.secondaryId)
-      .then(console.log)
+      .then((data) => data)
       .catch(console.log);
   };
   const handleWatchLater = async () => {
     setIsWatchLater((prevState) => !prevState);
     await addToFavoriteOrWatchLater('watchlater', movie.secondaryId)
-      .then(console.log)
+      .then((data) => data)
       .catch(console.log);
   };
 
   useEffect(() => {
     getFavorites()
-      .then((data) => data)
+      .then((data) =>
+        data.data.map((movieFromFavorites) => {
+          if (movieFromFavorites.id === movie.id) setIsFavorite(true);
+          return true;
+        })
+      )
       .catch(console.log);
     getWatchLater()
-      .then((data) => data)
+      .then((data) =>
+        data.data.map((movieFromWatchLater) => {
+          if (movieFromWatchLater.id === movie.id) setIsWatchLater(true);
+          return true;
+        })
+      )
       .catch(console.log);
-  }, []);
+  }, [movie.id]);
   return (
     <div className="MovieCard">
       <section>
@@ -44,23 +55,27 @@ const MovieCard = ({ movie }) => {
         <div className="movie-card-cover"></div>
 
         <p className="movie-card-title">{movie.title}</p>
-        <li>
+        <li className="movie-card-icons">
           <FontAwesomeIcon
-            className={`${isFavorite ? 'is-favorite' : ''}`}
+            className={`${isFavorite ? '' : 'is-favorite'}`}
             onClick={handleFavorite}
-            icon={faClockFour}
+            icon={faStar}
             fontSize={25}
           />
           <FontAwesomeIcon
-            className={`${isWatchLater ? 'is-watch-later' : ''}`}
+            className={`${isWatchLater ? '' : 'is-watch-later'}`}
             onClick={handleWatchLater}
-            icon={faStar}
+            icon={faClockFour}
             fontSize={25}
           />
         </li>
       </section>
       <p className="movie-card-resume">{movie.synopsis}</p>
-      <div className="movie-card-tags"></div>
+      <div className="movie-card-tags">
+        {movie.genres
+          ? movie.genres.map((movieGenre) => <Tag genre={movieGenre} />)
+          : null}
+      </div>
     </div>
   );
 };

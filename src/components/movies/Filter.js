@@ -62,7 +62,13 @@ const Filter = ({
       </div>
       <div className="filter-right">
         {tags.map((tag, index) => (
-          <Tag genres={genres} setGenres={setGenres} key={index} genre={tag} />
+          <Tag
+            filter
+            genres={genres}
+            setGenres={setGenres}
+            key={index}
+            genre={tag}
+          />
         ))}
       </div>
     </div>

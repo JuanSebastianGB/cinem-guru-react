@@ -21,16 +21,24 @@ const Tag = ({ genre, filter, genres, setGenres }) => {
       setSelected(true);
     }
   };
-  return (
-    <span>
-      <li
-        onClick={handleTag}
-        className={`Tag ${selected ? 'movie-tag-bg-red' : ''}`}
-      >
-        {genre}
-      </li>
-    </span>
-  );
+
+  if (filter)
+    return (
+      <span>
+        <li
+          onClick={handleTag}
+          className={`Tag ${selected ? 'movie-tag-bg-red' : ''}`}
+        >
+          {genre}
+        </li>
+      </span>
+    );
+  else
+    return (
+      <span>
+        <li className="Tag selected movie-tag-bg-red">{genre}</li>
+      </span>
+    );
 };
 
 Tag.propTypes = {
