@@ -31,6 +31,8 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
         }
       } catch (error) {
         setError(error.response.data.message);
+        setUsername('');
+        setPassword('');
         setTimeout(() => {
           setError('');
         }, 3000);
@@ -48,6 +50,8 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
         setUserUsername(username);
       } catch (error) {
         setError(error.response.data.message);
+        setUsername('');
+        setPassword('');
         setTimeout(() => {
           setError('');
         }, 3000);
@@ -55,8 +59,17 @@ const Authentication = ({ setIsLoggedIn, setUserUsername }) => {
     }
   };
 
-  const handleSignIn = (e) => set_switch(true);
-  const handleSignUp = (e) => set_switch(false);
+  const handleSignIn = (e) => {
+    setUsername('');
+    setPassword('');
+    set_switch(true);
+  };
+  const handleSignUp = (e) => {
+    setUsername('');
+    setPassword('');
+    set_switch(false);
+  };
+
   return (
     <div className="Authentication">
       <div className="selection">
