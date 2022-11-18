@@ -26,7 +26,7 @@ const SideBar = () => {
     getActivitiesService()
       .then((data) => setActivities(data.data.slice(0, 10)))
       .catch((e) => console.log(e));
-  }, [selected]);
+  }, [selected, activities]);
   return (
     <div className="Sidebar">
       <ul>
@@ -89,14 +89,16 @@ const SideBar = () => {
           <div className="sidebar-text-content">Watch later</div>
           <FontAwesomeIcon className="next-row" icon={faArrowRight} />
         </li>
-        <section className="activities">
-          <h3>LATEST ACTIVITIES</h3>
-          {activities
-            ? activities.map((activity) => (
-                <Activity key={activity.id} {...activity} />
-              ))
-            : null}
-        </section>
+        {activities.length > 0 && (
+          <section className="activities">
+            <h3>LATEST ACTIVITIES</h3>
+            {activities
+              ? activities.map((activity) => (
+                  <Activity key={activity.id} {...activity} />
+                ))
+              : null}
+          </section>
+        )}
       </ul>
     </div>
   );
